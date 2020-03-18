@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 import { MemberCard, Form } from './components';
-
+ 
 function App() {
   const [teamList, setTeamList] = useState([
   {
@@ -26,9 +26,23 @@ function App() {
   }
   ]);
 
+  const [formState, setFormState] = useState({
+    name: "",
+    email: "",
+    role: ""
+  });
+
+  const formStateSetter = event => {
+    setFormState({
+      ...formState,
+      [event.target.name]: event.target.value
+    })
+  }
+
   return (
     <div className="App">
-      <Form />
+      <Form formStateSetter={formStateSetter} />
+      <MemberCard member={formState} />
       {teamList.map(member => (
         <MemberCard key={member.memId} member={member} />
       ))}

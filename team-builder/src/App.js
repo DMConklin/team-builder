@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
-import MemberCard from './components/member-card';
+import { MemberCard, Form } from './components';
 
 function App() {
   const [teamList, setTeamList] = useState([
@@ -28,6 +28,7 @@ function App() {
 
   return (
     <div className="App">
+      <Form />
       {teamList.map(member => (
         <MemberCard key={member.memId} member={member} />
       ))}

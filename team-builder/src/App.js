@@ -51,11 +51,17 @@ function App() {
     resetForm();
   }
 
+  const handleRemoveMember = (id) => {
+    setTeamList( prevState => {
+      return prevState.filter(member => member.id !== id);
+    });
+  }
+
   return (
     <div className="App">
       <Form formStateSetter={formStateSetter} addTeamMember={addTeamMember} formState={formState} /><br />
       {teamList.map(member => (
-        <MemberCard key={member.id} member={member} />
+        <MemberCard key={member.id} member={member} removeMember={handleRemoveMember} />
       ))}
     </div>
   );

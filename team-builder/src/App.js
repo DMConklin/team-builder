@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
-import { useState } from 'react';
 import { MemberCard, Form } from './components';
  
 function App() {
@@ -33,6 +32,15 @@ function App() {
   };
 
   const [formState, setFormState] = useState(initFormState);
+  const [memberToEdit, setMemberToEdit] = useState(initFormState);
+
+  useEffect(() => {
+    setFormState({
+      name: memberToEdit.name,
+      email: memberToEdit.email,
+      role: memberToEdit.role
+    });
+  },[memberToEdit])
 
   const formStateSetter = event => {
     setFormState({
@@ -51,6 +59,10 @@ function App() {
     resetForm();
   }
 
+  const handleEditMember = (member) => {
+    setMemberToEdit(member);
+  }
+
   const handleRemoveMember = (id) => {
     setTeamList( prevState => {
       return prevState.filter(member => member.id !== id);
@@ -61,7 +73,7 @@ function App() {
     <div className="App">
       <Form formStateSetter={formStateSetter} addTeamMember={addTeamMember} formState={formState} /><br />
       {teamList.map(member => (
-        <MemberCard key={member.id} member={member} removeMember={handleRemoveMember} />
+        <MemberCard key={member.id} member={member} editMember={handleEditMember} removeMember={handleRemoveMember} />
       ))}
     </div>
   );

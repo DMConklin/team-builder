@@ -27,7 +27,7 @@ function App() {
   const initFormState = {
     name: "",
     email: "",
-    role: "Backend Designer",
+    role: "",
     id: null
   };
 

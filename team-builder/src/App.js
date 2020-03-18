@@ -34,6 +34,8 @@ function App() {
   const [formState, setFormState] = useState(initFormState);
   const [memberToEdit, setMemberToEdit] = useState(initFormState);
 
+  const [isEditing, setIsEditing] = useState(false);
+
   useEffect(() => {
     setFormState({
       name: memberToEdit.name,
@@ -59,8 +61,16 @@ function App() {
     resetForm();
   }
 
+  const editTeamMember = event => {
+    event.preventDefault();
+    setTeamList( prevState => prevState.filter(member => member.id !== memberToEdit.id).concat({...formState, id: memberToEdit.id}) )
+    setIsEditing(false);
+    resetForm();
+  } 
+
   const handleEditMember = (member) => {
     setMemberToEdit(member);
+    setIsEditing(true);
   }
 
   const handleRemoveMember = (id) => {
@@ -71,7 +81,7 @@ function App() {
 
   return (
     <div className="App">
-      <Form formStateSetter={formStateSetter} addTeamMember={addTeamMember} formState={formState} /><br />
+      <Form formStateSetter={formStateSetter} addTeamMember={addTeamMember} editTeamMember={editTeamMember} formState={formState} isEditing={isEditing} /><br />
       {teamList.map(member => (
         <MemberCard key={member.id} member={member} editMember={handleEditMember} removeMember={handleRemoveMember} />
       ))}

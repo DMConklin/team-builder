@@ -3,7 +3,7 @@ import React from 'react';
 const Form = (props) => {
 
     return(
-        <form onSubmit={props.addTeamMember}>
+        <form onSubmit={props.isEditing === true ? props.editTeamMember : props.addTeamMember}>
             <label htmlFor="name">Name</label>
             <input name="name" id ="name" placeholder="First Last" value={props.formState.name} onChange={props.formStateSetter} /><br />
             <label htmlFor="email">Email</label>
@@ -15,7 +15,7 @@ const Form = (props) => {
             <input type="radio" name="role" id="designer" value="Designer" onChange={props.formStateSetter} />
             <label htmlFor="designer">Designer</label>
             <br /><br />
-            <button>Add Member</button>
+            <button>{props.isEditing === true ? 'Edit Member' : 'Add Member'}</button>
         </form>
     )
 }

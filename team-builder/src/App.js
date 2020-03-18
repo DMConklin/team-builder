@@ -7,21 +7,21 @@ import MemberCard from './components/member-card';
 function App() {
   const [teamList, setTeamList] = useState([
   {
-    fname: 'Darrell',
-    lname: 'Conklin',
-    cohort: 'WEBPT14',
+    name: 'Darrell Conklin',
+    email: 'dmconklin84@gmail.com',
+    role: 'Backend Engineer',
     memId: 1
   },
   {
-    fname: 'Kim',
-    lname: 'Buck',
-    cohort: 'WEBPT14',
+    name: 'Kim Buck',
+    email: 'kimbuck@email.com',
+    role: 'Designer',
     memId: 2
   },
   {
-    fname: 'Amber',
-    lname: 'Chunn',
-    cohort: 'WEBPT14',
+    name: 'Amber Chunn',
+    email: 'amberchunn@email.com',
+    role: 'Frontend Engineer',
     memId: 3
   }
   ]);

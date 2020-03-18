@@ -1,26 +1,20 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const StyledForm = styled.form`
-    display: flex;
-    flex-direction: column;
-    max-width: 250px;
-    margin: 0 auto;
-`;
 
 const Form = (props) => {
     return(
-        <form>
-            <label for="name">Name</label>
-            <input type="text" name="name" id ="name" placeholder="First Last" onChange={props.formStateSetter} /><br />
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" placeholder="Email" onChange={props.formStateSetter} /><br />
-            <input type="radio" name="role" id="back-engine" value="Backend Engineer" onChange={props.formStateSetter} />
-            <label for="back-engine">Backend Engineer</label><br /> 
+        <form onSubmit={props.addTeamMember}>
+            <label htmlFor="name">Name</label>
+            <input name="name" id ="name" placeholder="First Last" value={props.formState.name} onChange={props.formStateSetter} /><br />
+            <label htmlFor="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Email" value={props.formState.email} onChange={props.formStateSetter} /><br />
+            <input type="radio" name="role" id="back-engine" value="Backend Engineer" onChange={props.formStateSetter} checked />
+            <label htmlFor="back-engine">Backend Engineer</label><br /> 
             <input type="radio" name="role" id="front-engine" value="Frontend Engineer" onChange={props.formStateSetter} />
-            <label for="back-engine">Backend Engineer</label><br />
+            <label htmlFor="back-engine">Frontend Engineer</label><br />
             <input type="radio" name="role" id="designer" value="Designer" onChange={props.formStateSetter} />
-            <label for="designer">Designer</label>
+            <label htmlFor="designer">Designer</label>
+            <br /><br />
+            <button>Add Member</button>
         </form>
     )
 }

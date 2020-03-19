@@ -33,8 +33,15 @@ function App() {
 
   const [formState, setFormState] = useState(initFormState);
   const [memberToEdit, setMemberToEdit] = useState(initFormState);
+  
 
   const [isEditing, setIsEditing] = useState(false);
+
+  // const [errors, setErrors] = useState({
+  //   name: false,
+  //   email: false,
+  //   rold: false
+  // })
 
   useEffect(() => {
     setFormState({
@@ -50,6 +57,26 @@ function App() {
       [event.target.name]: event.target.value
     })
   }
+
+  // const formValidation = (formData) => {
+  //   if (formData.name === '' || formData.name.length < 7) {
+  //     setErrors({...errors, name: true});
+  //   } else if (errors.name === true) {
+  //     setErrors({...errors, name: false});
+  //   }
+
+  //   if (formData.email === '') {
+  //     setErrors({...errors, email: true})
+  //   } else if (errors.email === 'true') {
+  //     setErrors({...errors, email: false})
+  //   }
+
+  //   if (formData.role === '') {
+  //     setErrors({...errors, role: true})
+  //   } else if (errors.role === 'true') {
+  //     setErrors({...errors, role: true})
+  //   }   
+  // }
 
   const resetForm = () => {
     setFormState(initFormState);
